@@ -19,7 +19,7 @@ class APIHandler(BaseHTTPRequestHandler):
 
     def get_status(self, host: str) -> None:
         try:
-            with urlopen(f"http://{host}:7000/info", timeout=60) as response:
+            with urlopen(f"http://{host}:7000/info", timeout=15) as response:
                 content = response.read()
                 data = loads(content)
                 self.set_response(data["statusFlags"] > 2000, response.status)
